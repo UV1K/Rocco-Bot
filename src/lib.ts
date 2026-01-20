@@ -250,7 +250,7 @@ export async function genMistyOutput(
         stopPlaying: stopPlayingTool,
         whatSong: whatSongTool,
       },
-      toolChoice: "required",
+      toolChoice: "auto",
     });
 
     const text = response.text;
