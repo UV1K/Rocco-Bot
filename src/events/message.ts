@@ -76,26 +76,11 @@ export default {
       return;
     }
     if (!output) return;
-    try {
-      const loadedJson = JSON.parse(output);
-      if (loadedJson.content) {
-        await message.reply(loadedJson.content);
-        return;
-      }
-      if (loadedJson.cleanContent) {
-        await message.reply(loadedJson.cleanContent);
-        return;
-      }
-      return await message.reply(output);
-    } catch {
-      if (output.includes('"avatar')) {
-        // Temp fix?
-        const formattedText = output.split('"avatar')[0];
-        if (!formattedText) return;
-        await message.reply(formattedText);
-        return;
-      }
-    }
-    await message.reply(output);
+          await message.reply({
+        content: output
+          .replace("<everyone>", "I TRIED TO PING EVERYONE AND FAILED LMFAOOOOO")
+          .replace("<here>", "I TRIED TO PING HERE AND FAILED LMFAOOOOO"),
+        allowedMentions: { roles: [], parse: ["roles", "users"] },
+      });
   },
 };
